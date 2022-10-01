@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">pss9fp</string>
+    <string name="temp_item_name">Temp Item Name</string>
+    <string name="checkbox">CheckBox</string>
+    <string name="add_item">Add a bucket list item</string>
 </resources>

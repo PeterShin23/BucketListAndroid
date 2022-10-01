@@ -6,16 +6,19 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import android.content.Intent
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val createTaskButton = findViewById<FloatingActionButton>(R.id.addTaskButton)
-        createTaskButton.setOnClickListener{
+        // Create make item button
+        val createItemButton = findViewById<FloatingActionButton>(R.id.addTaskButton)
+        createItemButton.setOnClickListener{
             val intent = Intent(this, AddTaskActivity::class.java)
             startActivity(intent)
         }
     }
+
 
 
 }
