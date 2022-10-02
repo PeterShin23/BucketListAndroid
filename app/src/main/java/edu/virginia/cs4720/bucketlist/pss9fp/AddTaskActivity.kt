@@ -8,7 +8,6 @@ import android.util.Log
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.TextView
-import java.text.SimpleDateFormat
 import java.util.*
 
 class AddTaskActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
@@ -19,7 +18,10 @@ class AddTaskActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_task)
 
-        findViewById<TextView>(R.id.dueDateText).setOnClickListener {
+        val itemName = findViewById<TextView>(R.id.itemName)
+        val itemDescription = findViewById<TextView>(R.id.itemDescription)
+
+        val itemDueDate = findViewById<TextView>(R.id.itemDueDate).setOnClickListener {
             DatePickerDialog(this, this,
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
@@ -31,11 +33,12 @@ class AddTaskActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener 
         saveButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            Log.i("check", "itemName: $itemName; itemDescription: $itemDescription; itemDueDate: $itemDueDate")
         }
     }
 
     override fun onDateSet(p0: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         Log.i("Calendar", "$year-${month+1}-$dayOfMonth")
-        findViewById<TextView>(R.id.dueDateText).text = "due date: ${month+1}/$dayOfMonth/$year"
+        findViewById<TextView>(R.id.itemDueDate).text = "due date: ${month+1}/$dayOfMonth/$year"
     }
 }

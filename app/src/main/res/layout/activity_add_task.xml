@@ -19,10 +19,10 @@
         app:layout_constraintVertical_bias="0.961" />
 
     <EditText
-        android:id="@+id/itemDescriptionText"
+        android:id="@+id/itemDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="356dp"
+        android:layout_marginBottom="428dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Item Description"
@@ -35,26 +35,30 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/dueDateText"
+        android:id="@+id/itemDueDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="due date"
         app:layout_constraintBottom_toTopOf="@+id/saveButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemDescriptionText" />
+        app:layout_constraintTop_toBottomOf="@+id/itemDescription"
+        app:layout_constraintVertical_bias="0.127" />
 
     <EditText
-        android:id="@+id/BucketListItem"
+        android:id="@+id/itemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Bucket List Item"
         android:inputType="text"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/itemDescriptionText"
+        app:layout_constraintBottom_toTopOf="@+id/itemDescription"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.706" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
