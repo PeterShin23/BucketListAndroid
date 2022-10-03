@@ -1,6 +1,7 @@
 package edu.virginia.cs4720.bucketlist.pss9fp.Room
 
 import androidx.room.*
+import edu.virginia.cs4720.bucketlist.pss9fp.Models.BucketItem
 
 @Dao
 interface BucketItemDao {
@@ -12,10 +13,10 @@ interface BucketItemDao {
      * ASC -> Ascending order
      * WHERE -> This is a condition used to query data
      * */
-    @Query("SELECT*FROM BucketItemList ORDER BY itemDueDate")
+    @Query("SELECT*FROM BucketItem ORDER BY itemDueDate")
     fun getBucketItemList(): List<BucketItem>
 
-    @Query("SELECT*FROM BucketItemList WHERE itemId=:id")
+    @Query("SELECT*FROM BucketItem WHERE itemId=:id")
     fun getItem(id: Int): BucketItem
     /**
      * @param item is what we want to save in our database
