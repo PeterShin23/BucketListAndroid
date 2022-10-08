@@ -3,4 +3,9 @@
     <string name="temp_item_name">Temp Item Name</string>
     <string name="checkbox">CheckBox</string>
     <string name="add_item">Add a bucket list item</string>
+    <string name="bucket_list_item">Bucket List Item</string>
+    <string name="due_date">due date</string>
+    <string name="save">Save</string>
+    <string name="update">Update</string>
+    <string name="completion_date">completion date</string>
 </resources>

@@ -10,22 +10,21 @@ import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.TextView
 import edu.virginia.cs4720.bucketlist.pss9fp.Models.BucketItem
-import edu.virginia.cs4720.bucketlist.pss9fp.Room.ItemListDatabase
+import edu.virginia.cs4720.bucketlist.pss9fp.Room.BucketItemDatabase
 import java.util.*
 
 class AddItemActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
     private val calendar = Calendar.getInstance()
-    private var db: ItemListDatabase? = null
+    private var db: BucketItemDatabase? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_item)
 
-        db = ItemListDatabase.getInstance(this)
+        db = BucketItemDatabase.getInstance(this)
 
         val itemName = findViewById<EditText>(R.id.itemName)
-        val itemDescription = findViewById<EditText>(R.id.itemDescription)
 
         val itemDueDate = findViewById<TextView>(R.id.itemDueDate)
         itemDueDate.setOnClickListener {
@@ -41,17 +40,19 @@ class AddItemActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener 
 
             // get values
             val name = itemName.text.toString()
-            val desc = itemDescription.text.toString()
-//            val dueDate:Int = convertStringForRoom(findViewById<TextView>(R.id.itemDueDate).text as String)
             val dueDate: String = convertStringForRoom(findViewById<TextView>(R.id.itemDueDate).text as String)
-            Log.i("check", "itemName: $name; itemDescription: $desc; itemDueDate: $dueDate")
+            Log.i("check", "itemName: $name; itemDueDate: $dueDate")
 
             // store in room
-            val item = BucketItem(0,name, desc, dueDate)
-            db!!.getBucketItemDao().saveItem(item)  // !! throw NPE, ? return null
+            val newitem = BucketItem(name, dueDate, false, "Not Finished Yet!")
+            db!!.getBucketItemDao().saveItem(newitem)  // !! throw NPE, ? return null
+
+            // check db to see if it was inserted
+//            for (item in db!!.getBucketItemDao().getBucketItemList()) {
+//                println(item.itemId)
+//            }
             Log.i("msg", "going back to main")
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            finish()
         }
     }
 
@@ -68,8 +69,6 @@ class AddItemActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener 
         val year:String = date[2];
 
         val formattedDate = "$year$month$day"
-//        val DateToInt: Int = formattedDate.toInt()
-//        return DateToInt
         return formattedDate
     }
 }

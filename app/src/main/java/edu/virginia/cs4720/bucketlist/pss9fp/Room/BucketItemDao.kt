@@ -18,14 +18,7 @@ interface BucketItemDao {
 
     @Query("SELECT*FROM BucketItem WHERE itemId=:id")
     fun getItem(id: Int): BucketItem
-    /**
-     * @param item is what we want to save in our database
-     * so many conflict can occur when a data is to be saved, the strategy is used to handle such conflicts
-     * Abort -> this aborts the transaction
-     * Ignore -> this ignores and continues the transaction
-     * Replace -> this replace the data
-     * others includes fail, and roolback
-     * */
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun saveItem(item: BucketItem)
 

@@ -12,18 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<!--        <ImageButton-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:id="@+id/itemCheckButton"-->
-<!--            android:layout_marginHorizontal="15dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:scaleX="1.5"-->
-<!--            android:scaleY="1.5"-->
-<!--            android:src="@drawable/ic_baseline_check_box_outline_blank_24"-->
-<!--            android:backgroundTint="@android:color/transparent"-->
-<!--            android:contentDescription="@string/checkbox">-->
-<!--        </ImageButton>-->
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/itemCheckButton"
+            android:layout_marginHorizontal="12dp"
+            android:layout_gravity="center"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:src="@drawable/ic_baseline_check_box_outline_blank_24"
+            android:backgroundTint="@android:color/transparent"
+            android:contentDescription="@string/checkbox">
+        </ImageButton>
 
         <TextView
             android:layout_width="0dp"
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/item_due_date"
             android:text="@string/temp_item_name"
-            style="@style/TextAppearance.AppCompat.Body1"
+            style="@style/TextAppearance.AppCompat.Title"
             android:layout_gravity="center"
             android:layout_marginHorizontal="15dp">
         </TextView>

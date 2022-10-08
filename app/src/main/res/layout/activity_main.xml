@@ -32,6 +32,15 @@
 <!--        app:layout_constraintVertical_bias="0.958"-->
 <!--        app:srcCompat="@android:drawable/ic_input_add"-->
 <!--        tools:ignore="SpeakableTextPresentCheck" />-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/itemsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/bucket_item_card" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addItemButton"
         android:layout_width="wrap_content"
@@ -46,13 +55,5 @@
         app:rippleColor="@color/white"
         android:focusable="true" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/itemsRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbarStyle="outsideOverlay"
-        android:scrollbars="vertical"
-        tools:listitem="@layout/bucket_item_card" />
-
-    </RelativeLayout>
-    <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+</RelativeLayout>
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
