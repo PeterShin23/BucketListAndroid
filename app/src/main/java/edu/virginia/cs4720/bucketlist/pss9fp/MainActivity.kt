@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity(), BucketAdapter.OnItemClickedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setTitle("Bucket List")
 
         db = BucketItemDatabase.getInstance(this)
         adapter = BucketAdapter()

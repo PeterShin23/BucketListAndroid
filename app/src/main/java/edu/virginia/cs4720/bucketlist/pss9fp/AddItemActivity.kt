@@ -21,6 +21,12 @@ class AddItemActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_item)
+        //actionbar
+        val actionbar = supportActionBar
+        //set actionbar title
+        actionbar!!.title = "Add Item"
+        //set back button
+        actionbar.setDisplayHomeAsUpEnabled(true)
 
         db = BucketItemDatabase.getInstance(this)
 
@@ -60,6 +66,11 @@ class AddItemActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener 
         Log.i("Calendar", "$year-${month+1}-$dayOfMonth")
 
         findViewById<TextView>(R.id.itemDueDate).text = "due date: ${month+1}/$dayOfMonth/$year"
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     fun convertStringForRoom(dateText: String): String {
