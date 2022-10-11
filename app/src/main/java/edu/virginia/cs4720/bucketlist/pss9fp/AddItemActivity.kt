@@ -65,7 +65,7 @@ class AddItemActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener 
     override fun onDateSet(p0: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         Log.i("Calendar", "$year-${month+1}-$dayOfMonth")
 
-        findViewById<TextView>(R.id.itemDueDate).text = "due date: ${month+1}/$dayOfMonth/$year"
+        findViewById<TextView>(R.id.itemDueDate).text = "Due Date: ${month+1}/$dayOfMonth/$year"
     }
 
     override fun onSupportNavigateUp(): Boolean {
