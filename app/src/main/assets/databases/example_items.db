@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS `BucketItem`;
+
+CREATE TABLE IF NOT EXISTS `BucketItem`
+(`itemName` TEXT NOT NULL,
+`itemDueDate` TEXT NOT NULL,
+`itemStatus` INTEGER NOT NULL,
+`itemCompletedDate` TEXT NOT NULL,
+`itemId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)
+
+INSERT INTO `BucketItem`
+(`itemName`, `itemDueDate`, `itemStatus`, `itemCompletedDate`, `itemId`)
+VALUES
+("task1", "20221019", 0, "Not Finished Yet!", 0),
+("task2", "20221020", 1, "20221018", 1)

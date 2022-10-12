@@ -1,6 +1,5 @@
 package edu.virginia.cs4720.bucketlist.pss9fp.Adapters
 
-import android.app.FragmentContainer
 import android.app.usage.NetworkStats
 import android.content.Context
 import android.util.Log

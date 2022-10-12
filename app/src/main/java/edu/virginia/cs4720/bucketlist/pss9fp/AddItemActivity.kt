@@ -48,6 +48,9 @@ class AddItemActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener 
 
             // check if user input is correct
             if (name.equals("") || dueDate.equals("Press to Set Due Date")) {
+                for (item in db!!.getBucketItemDao().getBucketItemList()) {
+                    println(item.toString())
+                }
                 Toast.makeText(this, "Set an item and a due date!", Toast.LENGTH_SHORT).show()
                 Log.i("toast", "should print toast statement here")
             } else {

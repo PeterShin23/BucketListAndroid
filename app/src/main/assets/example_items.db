@@ -1,3 +1,0 @@
-INSERT INTO itemdatabase (itemName, itemDueDate, itemStatus, itemCompletedDate) VALUES
-("task1", "20221019", false, "Not Finished Yet!"),
-("task2", "20221020", true, "20221018")
