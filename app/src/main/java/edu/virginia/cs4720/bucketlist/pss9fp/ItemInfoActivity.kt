@@ -35,9 +35,12 @@ class ItemInfoActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         // get db
         db = BucketItemDatabase.getInstance(this)
 
+
         // set information in appropriate fields
+        val currItem = db!!.getBucketItemDao().getItem(intent.getIntExtra("itemId", 0))
+
         name = findViewById<EditText>(R.id.editName)
-        name.text = intent.extras?.getString("itemName")
+        name.text = currItem.itemName
 
         dueDate = findViewById<TextView>(R.id.editDueDate)
         dueDate.setOnClickListener {
@@ -47,18 +50,19 @@ class ItemInfoActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
                 calendar.get(Calendar.DAY_OF_MONTH)
             ).show()
         }
-        val dueDateTemp = intent.extras?.getString("itemDueDate")
+        val dueDateTemp = currItem.itemDueDate
         dueDate.text = "Due Date: ${dueDateTemp?.let { convertRoomToString(it) }}"
 
-        val status = intent.getBooleanExtra("itemStatus", false)
+        val status = currItem.isCompleted()
         completionDate = findViewById<TextView>(R.id.editCompletionDate)
-        val completionDateTemp = intent.extras?.getString("itemCompletedDate")
+        val completionDateTemp = currItem.itemCompletedDate
         if (status) {
             completionDate.text =
                 "Completed Date: ${completionDateTemp?.let { convertRoomToString(it) }}"
         } else {
             completionDate.text = "Not Finished Yet!"
         }
+        Log.i("checking date", completionDate.text.toString())
 
         // make updates
         val updateButton = findViewById<Button>(R.id.updateButton)
@@ -70,7 +74,7 @@ class ItemInfoActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
             val dueDate: String = convertStringForRoom(findViewById<TextView>(R.id.editDueDate).text as String, 10)
             Log.i("check", "itemName: $name; itemDueDate: $dueDate")
             val completionDate: String = if (status) convertStringForRoom(findViewById<TextView>(R.id.editCompletionDate).text as String, 16) else "Not Finished Yet!"
-//            println(id)
+
             // store in room
             val updatedItem = BucketItem(name, dueDate, status, completionDate, id)
             Log.i("item content", "${updatedItem.itemId}, ${updatedItem.itemName}")
@@ -79,8 +83,9 @@ class ItemInfoActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
             finish()
         }
 
+
     }
-//
+
     override fun onDateSet(p0: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         Log.i("Calendar", "$year-${month+1}-$dayOfMonth")
 
@@ -92,7 +97,7 @@ class ItemInfoActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         onBackPressed()
         return true
     }
-//
+
     private fun convertRoomToString(date: String): String {
         val year = date.substring(0, 4)
         val month = if (date.substring(4,5) == "0") date.substring(5,6) else date.substring(4, 6)
@@ -101,7 +106,7 @@ class ItemInfoActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         val formattedDate = "$month/$day/$year"
         return formattedDate
     }
-//
+
     fun convertStringForRoom(dateText: String, index: Int): String {
         val date = dateText.substring(index).split("/")  // 10 accounts for "due date: "
         val month:String = if (date[0].length == 2) date[0] else "0" + date[0]

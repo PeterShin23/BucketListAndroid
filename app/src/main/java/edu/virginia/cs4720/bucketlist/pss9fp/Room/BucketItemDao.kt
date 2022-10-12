@@ -13,7 +13,7 @@ interface BucketItemDao {
      * ASC -> Ascending order
      * WHERE -> This is a condition used to query data
      * */
-    @Query("SELECT*FROM BucketItem ORDER BY itemDueDate")
+    @Query("SELECT*FROM BucketItem ORDER BY itemStatus, itemDueDate")
     fun getBucketItemList(): List<BucketItem>
 
     @Query("SELECT*FROM BucketItem WHERE itemId=:id")
@@ -27,4 +27,7 @@ interface BucketItemDao {
 
     @Delete
     fun removeItem(item: BucketItem)
+
+    @Query("DELETE FROM BucketItem")
+    fun deleteAll()
 }

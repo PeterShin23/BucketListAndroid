@@ -1,6 +1,7 @@
 package edu.virginia.cs4720.bucketlist.pss9fp
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +23,9 @@ class MainActivity : AppCompatActivity(), BucketAdapter.OnItemClickedListener {
         setTitle("Bucket List")
 
         db = BucketItemDatabase.getInstance(this)
+//        for (item in db!!.getBucketItemDao().getBucketItemList()) {
+//            println(item.toString())
+//        }
         adapter = BucketAdapter()
         adapter?.setItemClickedListener(this)
 
@@ -44,10 +48,6 @@ class MainActivity : AppCompatActivity(), BucketAdapter.OnItemClickedListener {
     override fun onItemClicked(item: BucketItem) {
         val intent = Intent(this, ItemInfoActivity::class.java)
         intent.putExtra("itemId", item.itemId)
-        intent.putExtra("itemName", item.itemName)
-        intent.putExtra("itemDueDate", item.itemDueDate)
-        intent.putExtra("itemStatus", item.itemStatus)
-        intent.putExtra("itemCompletedDate", item.itemCompletedDate)
         startActivity(intent)
     }
 

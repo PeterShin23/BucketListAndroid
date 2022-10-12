@@ -5,10 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.DatePicker
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import edu.virginia.cs4720.bucketlist.pss9fp.Models.BucketItem
 import edu.virginia.cs4720.bucketlist.pss9fp.Room.BucketItemDatabase
 import java.util.*
@@ -44,21 +41,25 @@ class AddItemActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener 
         val saveButton = findViewById<Button>(R.id.saveButton)
         saveButton.setOnClickListener {
 
-            // get values
+            // get values as they are at point of press
             val name = itemName.text.toString()
-            val dueDate: String = convertStringForRoom(findViewById<TextView>(R.id.itemDueDate).text as String)
-            Log.i("check", "itemName: $name; itemDueDate: $dueDate")
+            val dueDate = itemDueDate.text.toString()
+            Log.i("check name and duedate", "$name, $dueDate")
 
-            // store in room
-            val newitem = BucketItem(name, dueDate, false, "Not Finished Yet!")
-            db!!.getBucketItemDao().saveItem(newitem)  // !! throw NPE, ? return null
+            // check if user input is correct
+            if (name.equals("") || dueDate.equals("Press to Set Due Date")) {
+                Toast.makeText(this, "Set an item and a due date!", Toast.LENGTH_SHORT).show()
+                Log.i("toast", "should print toast statement here")
+            } else {
+                // create item and save it to room
+                val dueDateFormatted= convertStringForRoom(findViewById<TextView>(R.id.itemDueDate).text as String)
+                val newItem = BucketItem(name, dueDateFormatted, false, "Not Finished Yet!")
+                db!!.getBucketItemDao().saveItem(newItem)  // !! throw NPE, ? return null
+                // go back to main
+//                db!!.getBucketItemDao().deleteAll()
+                finish()
+            }
 
-            // check db to see if it was inserted
-//            for (item in db!!.getBucketItemDao().getBucketItemList()) {
-//                println(item.itemId)
-//            }
-            Log.i("msg", "going back to main")
-            finish()
         }
     }
 

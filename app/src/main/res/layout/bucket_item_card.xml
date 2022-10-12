@@ -22,8 +22,20 @@
             android:scaleY="1.5"
             android:src="@drawable/ic_baseline_check_box_outline_blank_24"
             android:backgroundTint="@android:color/transparent"
-            android:contentDescription="@string/checkbox">
+            android:contentDescription="@string/checkbox"
+            app:tint="@color/teal_200">
         </ImageButton>
+<!--        <CheckBox-->
+<!--            android:id="@+id/itemCheckButton"-->
+<!--            android:layout_width="48dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginHorizontal="12dp"-->
+<!--            android:backgroundTint="@android:color/transparent"-->
+<!--            android:contentDescription="@string/checkbox"-->
+<!--            android:scaleX="1.5"-->
+<!--            android:scaleY="1.5"-->
+<!--            android:src="@drawable/ic_baseline_check_box_outline_blank_24" />-->
 
         <TextView
             android:layout_width="0dp"
@@ -45,9 +57,5 @@
             android:layout_gravity="center"
             android:layout_marginHorizontal="15dp">
         </TextView>
-
     </LinearLayout>
-
-
-
 </androidx.cardview.widget.CardView>
