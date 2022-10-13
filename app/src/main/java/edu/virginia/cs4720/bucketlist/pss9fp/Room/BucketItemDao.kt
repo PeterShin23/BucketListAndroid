@@ -6,7 +6,7 @@ import edu.virginia.cs4720.bucketlist.pss9fp.Models.BucketItem
 @Dao
 interface BucketItemDao {
 
-    @Query("SELECT*FROM BucketItem ORDER BY itemStatus, itemDueDate")
+    @Query("SELECT*FROM BucketItem ORDER BY itemStatus, itemCompletedDate, itemDueDate")
     fun getBucketItemList(): List<BucketItem>
 
     @Query("SELECT*FROM BucketItem WHERE itemId=:id")

@@ -83,6 +83,23 @@ class ItemInfoActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
             finish()
         }
 
+        // delete item
+        val deleteButton = findViewById<Button>(R.id.deleteButton)
+        deleteButton.setOnClickListener {
+
+            // get values
+            val id = intent.getIntExtra("itemId", 0)
+            val name = name.text.toString()
+            val dueDate: String = convertStringForRoom(findViewById<TextView>(R.id.editDueDate).text as String, 10)
+            Log.i("check", "itemName: $name; itemDueDate: $dueDate")
+            val completionDate: String = if (status) convertStringForRoom(findViewById<TextView>(R.id.editCompletionDate).text as String, 16) else "Not Finished Yet!"
+
+            // delete from room
+            val toDeleteItem = BucketItem(name, dueDate, status, completionDate, id)
+            Log.i("item content", "${toDeleteItem.itemId}, ${toDeleteItem.itemName}")
+            db!!.getBucketItemDao().removeItem(toDeleteItem)
+            finish()
+        }
 
     }
 
