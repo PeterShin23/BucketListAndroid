@@ -1,3 +1,2 @@
-# android-starter-template
-Starter Template for the Android UVA Bucket List app
-Peter Shin
+# Android UVA Bucket List app by Peter Shin pss9fp
+## App Demo

@@ -14,6 +14,18 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
+/***************************************************************************************
+ *  REFERENCES
+ *  Title: Todolist-app
+ *  Author: Emmanuel Ozibo
+ *  Date: 10/13/2022
+ *  URL: https://github.com/Emmanuel-Ozibo/todolist-app
+ *  Software License: MIT
+ *  How I used: Inspiration for how to use adapter and helped understand what parts of the adapter
+ *  was used for
+ *
+ ***************************************************************************************/
+
 class BucketAdapter(var bucketList: List<BucketItem>? = ArrayList<BucketItem>()): RecyclerView.Adapter<BucketAdapter.ItemViewHolder>(){
 
     private var onItemClickedListener: OnItemClickedListener?= null

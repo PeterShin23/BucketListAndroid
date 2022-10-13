@@ -83,3 +83,14 @@ class AddItemActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener 
         return formattedDate
     }
 }
+
+/***************************************************************************************
+ *  REFERENCES
+ *  Title: Android Date Picker Dialog
+ *  Author: The Anroid Factory
+ *  Date: 10/13/2022
+ *  URL: https://www.youtube.com/watch?v=339-fxTcrmI&ab_channel=TheAndroidFactory
+ *  Software License: N/A
+ *  How I used: Inspiration for how to use date picker on a text view
+ *
+ ***************************************************************************************/
