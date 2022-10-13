@@ -1,7 +1,6 @@
 package edu.virginia.cs4720.bucketlist.pss9fp
 
 import android.app.DatePickerDialog
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -46,20 +45,17 @@ class AddItemActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener 
             val dueDate = itemDueDate.text.toString()
             Log.i("check name and duedate", "$name, $dueDate")
 
-            // check if user input is correct
+            // check if user input is valid
             if (name.equals("") || dueDate.equals("Press to Set Due Date")) {
-                for (item in db!!.getBucketItemDao().getBucketItemList()) {
-                    println(item.toString())
-                }
+
                 Toast.makeText(this, "Set an item and a due date!", Toast.LENGTH_SHORT).show()
-                Log.i("toast", "should print toast statement here")
+
             } else {
                 // create item and save it to room
                 val dueDateFormatted= convertStringForRoom(findViewById<TextView>(R.id.itemDueDate).text as String)
                 val newItem = BucketItem(name, dueDateFormatted, false, "Not Finished Yet!")
                 db!!.getBucketItemDao().saveItem(newItem)  // !! throw NPE, ? return null
                 // go back to main
-//                db!!.getBucketItemDao().deleteAll()
                 finish()
             }
 

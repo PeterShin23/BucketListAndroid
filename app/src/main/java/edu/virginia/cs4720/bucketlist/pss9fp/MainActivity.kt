@@ -23,9 +23,6 @@ class MainActivity : AppCompatActivity(), BucketAdapter.OnItemClickedListener {
         setTitle("Bucket List")
 
         db = BucketItemDatabase.getInstance(this)
-//        for (item in db!!.getBucketItemDao().getBucketItemList()) {
-//            println(item.toString())
-//        }
         adapter = BucketAdapter()
         adapter?.setItemClickedListener(this)
 

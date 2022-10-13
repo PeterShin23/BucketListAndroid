@@ -6,13 +6,6 @@ import edu.virginia.cs4720.bucketlist.pss9fp.Models.BucketItem
 @Dao
 interface BucketItemDao {
 
-    /**
-     * SELECT -> This retrieve rows from a table in a database
-     * FROM -> You specify the table to retrieve the rows from
-     * ORDER BY -> This is just a sort algorithm
-     * ASC -> Ascending order
-     * WHERE -> This is a condition used to query data
-     * */
     @Query("SELECT*FROM BucketItem ORDER BY itemStatus, itemDueDate")
     fun getBucketItemList(): List<BucketItem>
 

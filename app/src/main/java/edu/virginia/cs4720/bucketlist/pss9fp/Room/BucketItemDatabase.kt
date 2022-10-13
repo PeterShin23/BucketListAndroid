@@ -26,9 +26,9 @@ abstract class BucketItemDatabase: RoomDatabase(){
                 itemListDatabase = Room.databaseBuilder(context,
                     BucketItemDatabase::class.java,
                     BucketItemDatabase.databaseName)
-                    .allowMainThreadQueries()//i will remove this later, database are not supposed to be called on main thread
+                    .allowMainThreadQueries()
                     .createFromAsset("databases/examples.db")
-//                    .fallbackToDestructiveMigration() // needed this to resolve version 1 to version 2 migration of db
+//                    .fallbackToDestructiveMigration() // needed this to resolve version-to-version migration
                     .build()
             }
             println(itemListDatabase!!.getBucketItemDao().getBucketItemList())
